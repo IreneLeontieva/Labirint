@@ -20,8 +20,8 @@ public class TestBase {
     static void beforeAll() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
 
-        Configuration.browserSize = System.getProperty("size");
-        Configuration.browser = System.getProperty("browser");
+        Configuration.browserSize = System.getProperty("size", "1920x1080");
+        Configuration.browser = System.getProperty("browser", "chrome");
 
         String user = System.getProperty("user");
         String password = System.getProperty("password");
