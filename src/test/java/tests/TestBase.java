@@ -1,6 +1,5 @@
 package tests;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import helpers.Attach;
@@ -10,8 +9,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
 
 public class TestBase {
