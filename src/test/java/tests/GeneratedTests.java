@@ -116,9 +116,6 @@ public class GeneratedTests extends TestBase {
         step("Press search", () -> {
             $("input[value='Найти']").click();
         });
-        step("Press search", () -> {
-            $("input[value='Найти']").click();
-        });
         step("Search payment", () -> {
             $$(".helpcard-head").first().shouldHave(Condition.text("наличными"));
         });
