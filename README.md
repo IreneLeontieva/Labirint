@@ -8,6 +8,8 @@
 - <a href="#electric_plug-сборка-в-Jenkins">Сборка в Jenkins</a>
 - <a href="#arrow_forward-запуск-из-терминала">Запуск из терминала</a>
 - <a href="#open_book-allure-отчет">Allure отчет</a>
+- <a href="#hammer-allure-test-ops-отчет">Allure Test Ops отчет</a>
+- <a href="#wrench-интеграция-с-jira">Интеграция с Jira</a>
 - <a href="#robot-отчет-в-telegram">Отчет в Telegram</a>
 - <a href="#film_projector-видео-примеры-прохождения-тестов">Видео примеры прохождения тестов</a>
 
@@ -31,9 +33,11 @@
 - Проверка поиска
 - Проверка перехода в кабинет
 - Добавление товара в корзину
+- Проверка отсутствия ошибок в консоли бразуера
+- Проверка работы поиска в разделе помощь
 
 ## :electric_plug: Сборка в Jenkins
-### <a target="_blank" href="https://jenkins.autotests.cloud/job/011-AlexDonskov-11-13-Ozon/">Сборка в Jenkins</a>
+### <a target="_blank" href="https://jenkins.autotests.cloud/job/irinaleonteva_qaguru_11_13_jenkins/">Сборка в Jenkins</a>
 <p align="center">
 <img title="Jenkins Dashboard" src="images/screenshots/jenkins-dashboard.png">
 </p>  
@@ -50,9 +54,6 @@ clean
 test
 -Dremote=${REMOTE}
 -Dbrowser=${BROWSER}
--Dsize=${SIZE}
--Duser=${USER}
--Dpassword=${PASSWORD}
 ```
 
 ## :open_book: Allure отчет
@@ -64,6 +65,16 @@ test
 - ### Страница с проведенными тестами
 <p align="center">
 <img title="Allure Test Page" src="images/screenshots/allure-test-page.png">
+</p>
+
+## :hammer: Allure Test Ops отчет
+<p align="center">
+<img title="Allure Test Ops Launch" src="images/screenshots/allure-test-ops-page.png">
+</p>
+
+## :wrench: Интеграция с Jira
+<p align="center">
+<img title="Jira Issue Dashboard" src="images/screenshots/jira-issue-page.png">
 </p>
 
 ## :robot: Отчет в Telegram
