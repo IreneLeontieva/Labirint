@@ -78,8 +78,8 @@ public class GeneratedTests extends TestBase {
     @Description("Check title")
     @DisplayName("Page title should have header text")
     void titleTest() {
-        step("Open url 'https://www.labirint.ru/'", () ->
-                open("https://www.labirint.ru/"));
+//        step("Open url 'https://www.labirint.ru/'", () ->
+//                open("https://www.labirint.ru/"));
 
         step("Page title should have text 'Лабиринт | Книжный интернет-магазин: купить книги, новинки, бестселлеры'", () -> {
             String expectedTitle = "Лабиринт | Книжный интернет-магазин: купить книги, новинки, бестселлеры";
@@ -93,8 +93,8 @@ public class GeneratedTests extends TestBase {
     @Description("Check logs")
     @DisplayName("Check browser logs should not have severe errors")
     void consoleShouldNotHaveErrorsTest() {
-        step("Open url 'https://www.labirint.ru/'", () ->
-                open("https://www.labirint.ru/"));
+//        step("Open url 'https://www.labirint.ru/'", () ->
+//                open("https://www.labirint.ru/"));
 
         step("Проверяем что консоль логов не содержит ошибок 'SEVERE'", () -> {
             String consoleLogs = DriverUtils.getConsoleLogs();
