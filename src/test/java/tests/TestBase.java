@@ -2,6 +2,7 @@ package tests;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
+import config.Credentials;
 import helpers.Attach;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
@@ -28,10 +29,11 @@ public class TestBase {
 
         Configuration.browserSize = System.getProperty("size", "1920x1080");
         Configuration.browser = System.getProperty("browser", "chrome");
+        Configuration.pageLoadTimeout = 80000;
 
-        String user = System.getProperty("user");
-        String password = System.getProperty("password");
-        String remote = System.getProperty("remote");
+        String user = Credentials.config.user();
+        String password = Credentials.config.password();
+        String remote = Credentials.config.remote();
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);
