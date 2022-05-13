@@ -1,23 +1,23 @@
 package tests;
 
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Selenide;
 import com.github.javafaker.Faker;
 import helpers.DriverUtils;
 import io.qameta.allure.Description;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Locale;
+
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.openqa.selenium.logging.LogType.BROWSER;
 
 
 public class GeneratedTests extends TestBase {
 
-    Faker faker = new Faker();
+    Faker faker = new Faker((new Locale("ru")));
     String book = faker.book().title();
 
     @Test
@@ -91,7 +91,7 @@ public class GeneratedTests extends TestBase {
 
     @Test
     @Description("Check logs")
-    @DisplayName("Browser logs  should not have severe errors")
+    @DisplayName("Check browser logs should not have severe errors")
     void consoleShouldNotHaveErrorsTest() {
         step("Open url 'https://www.labirint.ru/'", () ->
                 open("https://www.labirint.ru/"));
@@ -104,8 +104,8 @@ public class GeneratedTests extends TestBase {
     }
 
     @Test
-    @Description("Check Serach")
-    @DisplayName("Check search")
+    @Description("Check search")
+    @DisplayName("Check help search works correct")
     void checkSearchHelp() {
         step("Go to help", () -> {
             $(byText("Доставка и оплата")).click();
