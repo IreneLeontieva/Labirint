@@ -1,7 +1,9 @@
 package tests;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Selenide;
 import com.github.javafaker.Faker;
+import helpers.Attach;
 import io.qameta.allure.Description;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -9,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.openqa.selenium.logging.LogType.BROWSER;
 
 
 public class GeneratedTests extends TestBase {
@@ -85,4 +88,17 @@ public class GeneratedTests extends TestBase {
         });
     }
 
+    @Test
+    @Description("Check logs")
+    @DisplayName("Browser logs  should not have severe errors")
+    void consoleShouldNotHaveErrorsTest() {
+        step("Open url 'https://www.labirint.ru/'", () ->
+                open("https://www.labirint.ru/"));
+
+        step("Проверяем что консоль логов не содержит ошибок 'SEVERE'", () -> {
+            String consoleLogs = String.join("\n", Selenide.getWebDriverLogs(String.valueOf(BROWSER)));
+            String errorText = "SEVERE";
+            assertThat(consoleLogs).doesNotContain(errorText);
+        });
+    }
 }
