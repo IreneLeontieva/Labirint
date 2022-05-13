@@ -8,12 +8,19 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import pages.*;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
-import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
 
 public class TestBase {
+
+    MainPage mainPage = new MainPage();
+    SearchPage searchPage = new SearchPage();
+    CabinetPage cabinetPage = new CabinetPage();
+    HelpPage helpPage = new HelpPage();
+    BasketPage basketPage = new BasketPage();
+    UchebnikiPage uchebnikiPage = new UchebnikiPage();
 
     @BeforeAll
     static void beforeAll() {
@@ -36,7 +43,7 @@ public class TestBase {
     @BeforeEach
     void openLabirint() {
         step("open labirint", () -> {
-            open("https://www.labirint.ru/");
+            mainPage.openMainPage();
         });
     }
 
