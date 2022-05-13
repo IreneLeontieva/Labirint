@@ -3,7 +3,7 @@ package tests;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.github.javafaker.Faker;
-import helpers.Attach;
+import helpers.DriverUtils;
 import io.qameta.allure.Description;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -96,9 +96,27 @@ public class GeneratedTests extends TestBase {
                 open("https://www.labirint.ru/"));
 
         step("Проверяем что консоль логов не содержит ошибок 'SEVERE'", () -> {
-            String consoleLogs = String.join("\n", Selenide.getWebDriverLogs(String.valueOf(BROWSER)));
+            String consoleLogs = DriverUtils.getConsoleLogs();
             String errorText = "SEVERE";
             assertThat(consoleLogs).doesNotContain(errorText);
+        });
+    }
+
+    @Test
+    @Description("Check Serach")
+    @DisplayName("Check search")
+    void checkSearchHelp() {
+        step("Search payment", () -> {
+            $("input[name='helptxt']").setValue("Оплата наличными").pressEnter();
+        });
+        step("Press search", () -> {
+            $("input[value='Найти']").click();
+        });
+        step("Press search", () -> {
+            $("input[value='Найти']").click();
+        });
+        step("Search payment", () -> {
+            $$(".helpcard-head").first().shouldHave(Condition.text("наличными"));
         });
     }
 }
