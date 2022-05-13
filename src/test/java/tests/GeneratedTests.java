@@ -8,6 +8,7 @@ import io.qameta.allure.Description;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -106,6 +107,9 @@ public class GeneratedTests extends TestBase {
     @Description("Check Serach")
     @DisplayName("Check search")
     void checkSearchHelp() {
+        step("Go to help", () -> {
+            $(byText("Доставка и оплата")).click();
+        });
         step("Search payment", () -> {
             $("input[name='helptxt']").setValue("Оплата наличными").pressEnter();
         });
