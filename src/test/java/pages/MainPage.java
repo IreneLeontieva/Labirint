@@ -16,7 +16,6 @@ public class MainPage {
 
 
     // actions
-
     public void openMainPage() {
         open("https://www.labirint.ru/");
     }

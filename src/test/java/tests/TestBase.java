@@ -1,6 +1,9 @@
 package tests;
 
 import com.codeborne.selenide.Configuration;
+
+import static com.codeborne.selenide.Selenide.open;
+
 import com.codeborne.selenide.logevents.SelenideLogger;
 import config.Credentials;
 import helpers.Attach;
@@ -27,25 +30,27 @@ public class TestBase {
     static void beforeAll() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
 
+        Configuration.baseUrl = "https://www.labirint.ru/";
         Configuration.browserSize = System.getProperty("size", "1920x1080");
         Configuration.browser = System.getProperty("browser", "chrome");
         Configuration.pageLoadTimeout = 80000;
 
-        String user = Credentials.config.user();
-        String password = Credentials.config.password();
-        String remote = Credentials.config.remote();
-
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("enableVNC", true);
-        capabilities.setCapability("enableVideo", true);
-        Configuration.browserCapabilities = capabilities;
-        Configuration.remote = "https://" + user + ":" + password + "@" + remote;
+        if (Credentials.isRemoteWebDriver()) {
+            String user = Credentials.config.user();
+            String password = Credentials.config.password();
+            String remote = Credentials.config.remote();
+            DesiredCapabilities capabilities = new DesiredCapabilities();
+            capabilities.setCapability("enableVNC", true);
+            capabilities.setCapability("enableVideo", true);
+            Configuration.browserCapabilities = capabilities;
+            Configuration.remote = "https://" + user + ":" + password + "@" + remote;
+        }
     }
 
     @BeforeEach
     void openLabirint() {
         step("open labirint", () -> {
-            mainPage.openMainPage();
+            open("https://www.labirint.ru/");
         });
     }
 

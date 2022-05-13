@@ -14,5 +14,7 @@ public interface CredentialsConfig extends Config {
     String password();
 
     @Key("remote")
+    @DefaultValue("")
     String remote();
+
 }
